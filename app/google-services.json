@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "230462897983",
+    "project_id": "fitfreakdummy",
+    "storage_bucket": "fitfreakdummy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:230462897983:android:80dd9b4bc655e8ca559d8a",
+        "android_client_info": {
+          "package_name": "com.example.fitfreak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "230462897983-h3dc1l6s7ugte6p32nkhv6koss1r9g68.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_WJhF1uKNZJ8fSJDP5EmUhCc-7BS3jOA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "230462897983-h3dc1l6s7ugte6p32nkhv6koss1r9g68.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
