@@ -4,17 +4,27 @@ package com.example.fitfreak;
 
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.Locale;
 
@@ -25,12 +35,24 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Sensor accel;
     private static final String TEXT_NUM_STEPS = "Number of Steps: ";
     private int numSteps;
-    private TextView calories;
+    private TextView calories,steps,distance;
     private Button BtnStart;
     private Button BtnStop;
+    private  Button profile;
+    TextView clock,DAYS;
 
-    TextView clock;
+    private  Button Logout;
     private int seconds = 0;
+
+
+
+    User user;
+    DatabaseReference databaseReference;
+    String userId;
+
+
+    int Days;
+
 
 
     private boolean running;
@@ -42,6 +64,33 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DAYS=findViewById(R.id.DAYS);
+        userId=FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userId);
+        final User[] user = new User[1];
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                user[0] =snapshot.getValue(User.class);
+                Days=user[0].days+1;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
 
         // Get an instance of the SensorManager
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -49,20 +98,42 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         simpleStepDetector = new StepDetector();
         simpleStepDetector.registerListener(this);
 
-        calories = (TextView) findViewById(R.id.caloires);
+        steps = (TextView) findViewById(R.id.steps);
+        calories=findViewById(R.id.calories);
+        distance=findViewById(R.id.distance);
         BtnStart = (Button) findViewById(R.id.btn_start);
         BtnStop = (Button) findViewById(R.id.btn_stop);
-
+        profile=findViewById(R.id.profile);
         clock = findViewById(R.id.clock);
+        Logout=findViewById(R.id.Logout);
 
+        Logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),Login.class));
+                finish();
+            }
+        });
 
         BtnStart.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
+                int addDay=Days;
+                DAYS.setText(" DAY # "+addDay);
+
                 running = true;
                 numSteps = 0;
                 sensorManager.registerListener(MainActivity.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
+
+            }
+        });
+
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),MyProfile.class));
 
             }
         });
@@ -72,6 +143,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             @Override
             public void onClick(View arg0) {
+                databaseReference.child("days").setValue(Days);
+
+
                 running = false;
                 sensorManager.unregisterListener(MainActivity.this);
 
@@ -115,7 +189,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void step(long timeNs) {
         numSteps++;
-        calories.setText(TEXT_NUM_STEPS + numSteps);
+        steps.setText(TEXT_NUM_STEPS + numSteps);
+
+        double meter=(1000*numSteps)/1350;
+        distance.setText("KM ->" + String.format("%.3f",meter/1000));
+        double caloriesburned=meter*76/1000;
+
+        calories.setText("Calories->"+String.format("%.2f",caloriesburned));
+
     }
 
 
