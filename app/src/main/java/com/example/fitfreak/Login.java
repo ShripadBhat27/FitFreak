@@ -42,7 +42,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 String Email=mEmail.getText().toString();
                 String Password=mPassword.getText().toString();
-             
+
                 if(TextUtils.isEmpty(Email)){
                     mEmail.setError("EMAIL IS EMPTY!!");
                     return;

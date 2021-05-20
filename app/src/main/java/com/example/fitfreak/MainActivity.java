@@ -42,12 +42,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     TextView clock,DAYS;
 
     private  Button Logout;
+    private Button history;
     private int seconds = 0;
 
 
 
     User user;
-    DatabaseReference databaseReference;
+    //databaseReference -> User Info || databaseReference2 -> Calories Info
+    DatabaseReference databaseReference,databaseReference2;
     String userId;
 
 
@@ -67,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         DAYS=findViewById(R.id.DAYS);
         userId=FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userId);
+        databaseReference2=FirebaseDatabase.getInstance().getReference("Calorie").child(userId);
         final User[] user = new User[1];
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -106,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         profile=findViewById(R.id.profile);
         clock = findViewById(R.id.clock);
         Logout=findViewById(R.id.Logout);
+        history=findViewById(R.id.history);
 
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +119,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 finish();
             }
         });
+
+
 
         BtnStart.setOnClickListener(new View.OnClickListener() {
 
@@ -138,13 +144,20 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         });
 
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),History.class));
+            }
+        });
+
 
         BtnStop.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
                 databaseReference.child("days").setValue(Days);
-
+                databaseReference2.child(Integer.toString(Days)).setValue(numSteps);
 
                 running = false;
                 sensorManager.unregisterListener(MainActivity.this);
