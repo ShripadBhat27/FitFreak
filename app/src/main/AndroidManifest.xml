@@ -11,10 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitFreak">
-        <activity android:name=".History"
-            android:parentActivityName=".MainActivity"    ></activity>
+        <activity android:name=".Register"></activity>
+        <activity
+            android:name=".History"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".Login" />
-        <activity android:name=".Register">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,11 +27,6 @@
             android:name=".MyProfile"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
