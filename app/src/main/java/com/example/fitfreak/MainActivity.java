@@ -15,6 +15,8 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,11 +40,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private TextView calories,steps,distance;
     private Button BtnStart;
     private Button BtnStop;
-    private  Button profile;
     TextView clock,DAYS;
 
-    private  Button Logout;
-    private Button history;
+
     private int seconds = 0;
 
 
@@ -106,19 +106,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         distance=findViewById(R.id.distance);
         BtnStart = (Button) findViewById(R.id.btn_start);
         BtnStop = (Button) findViewById(R.id.btn_stop);
-        profile=findViewById(R.id.profile);
         clock = findViewById(R.id.clock);
-        Logout=findViewById(R.id.Logout);
-        history=findViewById(R.id.history);
 
-        Logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),Login.class));
-                finish();
-            }
-        });
+
+
 
 
 
@@ -136,20 +127,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         });
 
-        profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MyProfile.class));
 
-            }
-        });
 
-        history.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),History.class));
-            }
-        });
+
 
 
         BtnStop.setOnClickListener(new View.OnClickListener() {
@@ -301,5 +281,30 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 handler.postDelayed(this, 1000);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
+            case R.id.mprofile:
+                startActivity(new Intent(getApplicationContext(),MyProfile.class));break;
+            case R.id.mhistory:
+                startActivity(new Intent(getApplicationContext(),History.class));
+                break;
+            case R.id.mlogout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),Login.class));
+                finish();
+                break;
+
+        }
+        return true;
     }
 }

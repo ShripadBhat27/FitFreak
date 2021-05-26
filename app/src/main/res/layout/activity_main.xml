@@ -12,9 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="178dp"
         android:layout_marginTop="46dp"
-        android:layout_marginEnd="47dp"
         android:text="DAY"
-        app:layout_constraintEnd_toStartOf="@+id/Logout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,10 +31,11 @@
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SensorStart"
+        android:text="START"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.352"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.549" />
@@ -45,14 +44,11 @@
         android:id="@+id/btn_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="308dp"
-        android:text="SensorStop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="STOP"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.311"
-        app:layout_constraintStart_toEndOf="@+id/btn_start"
-        app:layout_constraintTop_toBottomOf="@+id/Logout"
-        app:layout_constraintVertical_bias="0.549" />
+        app:layout_constraintStart_toEndOf="@+id/btn_start" />
 
     <TextView
         android:id="@+id/clock"
@@ -84,42 +80,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calories" />
-
-    <Button
-        android:id="@+id/profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="42dp"
-        android:layout_marginEnd="166dp"
-        android:text="Profile"
-        app:layout_constraintEnd_toStartOf="@+id/Logout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/Logout"
-        style="@style/Widget.AppCompat.Button.Small"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="299dp"
-        android:text="LOG OUT"
-        app:layout_constraintBottom_toTopOf="@+id/btn_stop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/DAYS"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/history"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:text="History"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.889"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
