@@ -48,10 +48,10 @@ public class MyProfile extends AppCompatActivity {
                 }
 
 
-                textView1.setText(keyArray.get(4) + " :"+ valuesArray.get(4));
-                textView2.setText(keyArray.get(2) + " :"+ valuesArray.get(2));
-                textView3.setText(keyArray.get(0) + " :"+ valuesArray.get(0));
-                textView4.setText(keyArray.get(1) + " :"+ valuesArray.get(1));
+                textView1.setText("Name : "+ valuesArray.get(4));
+                textView2.setText("Email : "+ valuesArray.get(2));
+                textView3.setText("Age : "+ valuesArray.get(0));
+                textView4.setText("Days So far : "+ valuesArray.get(1));
 
 
 

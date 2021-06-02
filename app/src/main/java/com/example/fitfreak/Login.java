@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +16,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
-    EditText mEmail,mPassword;
+    TextInputEditText mEmail,mPassword;
     Button mSingin;
     ProgressBar progressBar2;
     FirebaseAuth fAuth;
@@ -29,11 +31,13 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        mEmail=findViewById(R.id.email2);
-        mPassword=findViewById(R.id.Password2);
+        mEmail=findViewById(R.id.mEmail);
+        mPassword=findViewById(R.id.mPassword);
         mSingin=findViewById(R.id.SignIN);
         progressBar2=findViewById(R.id.progressBar2);
         mRegister=findViewById(R.id.alreadyRegister);
+
+
         fAuth=FirebaseAuth.getInstance();
 
 
@@ -41,6 +45,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String Email=mEmail.getText().toString();
+
                 String Password=mPassword.getText().toString();
 
                 if(TextUtils.isEmpty(Email)){
