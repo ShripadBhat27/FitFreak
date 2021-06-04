@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button BtnStart;
     private Button BtnStop;
     TextView clock,DAYS;
+    private Button Article;
 
 
     private int seconds = 0;
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         DAYS=findViewById(R.id.DAYS);
+        Article=findViewById(R.id.articles);
         userId=FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userId);
         databaseReference2=FirebaseDatabase.getInstance().getReference("Calorie").child(userId);
@@ -108,8 +110,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         BtnStop = (Button) findViewById(R.id.btn_stop);
         clock = findViewById(R.id.clock);
 
-
-
+        Article.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),api.class));
+            }
+        });
 
 
 
@@ -119,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             public void onClick(View arg0) {
                 int addDay=Days;
                 DAYS.setText(" DAY # "+addDay);
-
+                seconds=0;
                 running = true;
                 numSteps = 0;
                 sensorManager.registerListener(MainActivity.this, accel, SensorManager.SENSOR_DELAY_FASTEST);
