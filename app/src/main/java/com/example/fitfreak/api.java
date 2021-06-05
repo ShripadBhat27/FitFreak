@@ -11,6 +11,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kwabenaberko.newsapilib.NewsApiClient;
 import com.kwabenaberko.newsapilib.models.request.EverythingRequest;
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse;
@@ -27,8 +30,6 @@ public class api extends AppCompatActivity {
     private TopFeedAdaptor topFeedAdaptor;
     private List<TopFeedModel> topFeedModelList=new ArrayList<>();
     private int pageNumber=1,per_page=20;
-    private String apikey="8daa0a21bd7e4017aa08c678b50d0709";
-    private String apiurl="https://newsapi.org/v2/everything?q=fitness&sortBy=popularity&apiKey="+apikey;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
