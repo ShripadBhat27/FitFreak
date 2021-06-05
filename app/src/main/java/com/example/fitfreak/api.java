@@ -1,5 +1,6 @@
 package com.example.fitfreak;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -11,6 +12,12 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.kwabenaberko.newsapilib.NewsApiClient;
 import com.kwabenaberko.newsapilib.models.request.EverythingRequest;
 import com.kwabenaberko.newsapilib.models.response.ArticleResponse;
@@ -23,6 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class api extends AppCompatActivity {
+    DatabaseReference databaseReference;
+    String userId;
     private RecyclerView topFeedRecyclerView;
     private TopFeedAdaptor topFeedAdaptor;
     private List<TopFeedModel> topFeedModelList=new ArrayList<>();
@@ -34,7 +43,27 @@ public class api extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_api);
         topFeedRecyclerView=findViewById(R.id.top_feed_recycler_view);
-        getData();
+
+        userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
+        databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userId);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                pageNumber=snapshot.getValue(User.class).getDays();
+                pageNumber=pageNumber%19;
+                getData();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+        //getData();
         topFeedAdaptor=new TopFeedAdaptor(topFeedModelList,this);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);

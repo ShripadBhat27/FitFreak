@@ -87,7 +87,7 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(Register.this, "USER CREATED", Toast.LENGTH_SHORT).show();
                             String userID=fAuth.getCurrentUser().getUid();
                             ArrayList<Integer> array=new ArrayList<>();
-                            User u1=new User(Name,Email,Age,userID,0,array);
+                            User u1=new User(Name,Email,Age,userID,0,0,array);
                             databaseUsers.child(userID).setValue(u1);
 
 
