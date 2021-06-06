@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_start" />
 
     <TextView
-        android:id="@+id/calories"
+        android:id="@+id/calorie_intake_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calories" />
+        app:layout_constraintTop_toBottomOf="@+id/calorie_intake_content" />
 
     <Button
         android:id="@+id/articles"
@@ -94,12 +94,13 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_stop" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/calcal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="232dp"
-        android:text="Button"
+        android:text="Calorie Calculator"
+        app:layout_constraintEnd_toStartOf="@+id/articles"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_start" />
 

@@ -14,7 +14,6 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button BtnStop;
     TextView clock,DAYS;
     private Button Article;
+    private Button CalorieCal;
 
 
     private int seconds = 0;
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         DAYS=findViewById(R.id.DAYS);
         Article=findViewById(R.id.articles);
+        CalorieCal=findViewById(R.id.calcal);
         userId=FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userId);
         databaseReference2=FirebaseDatabase.getInstance().getReference("Calorie").child(userId);
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         simpleStepDetector.registerListener(this);
 
         steps = (TextView) findViewById(R.id.steps);
-        calories=findViewById(R.id.calories);
+        calories=findViewById(R.id.calorie_intake_content);
         distance=findViewById(R.id.distance);
         BtnStart = (Button) findViewById(R.id.btn_start);
         BtnStop = (Button) findViewById(R.id.btn_stop);
@@ -117,7 +118,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         });
 
-
+        CalorieCal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),caloriecal.class));
+            }
+        });
 
         BtnStart.setOnClickListener(new View.OnClickListener() {
 

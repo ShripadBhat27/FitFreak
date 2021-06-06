@@ -18,10 +18,8 @@ import java.util.ArrayList;
 public class MyProfile extends AppCompatActivity {
     DatabaseReference databaseReference;
     String userId;
-    public ArrayList<String> valuesArray;
-    public ArrayList<String> keyArray;
 
-    TextView textView1,textView2,textView3,textView4;
+    TextView textView1,textView2,textView3,textView4,textView7;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,25 +32,19 @@ public class MyProfile extends AppCompatActivity {
         textView2=findViewById(R.id.textView2);
         textView3=findViewById(R.id.textView3);
         textView4=findViewById(R.id.textView4);
-
-        valuesArray=new ArrayList<>(6);
-        keyArray=new ArrayList<>(6);
+        textView7=findViewById(R.id.textView7);
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot it:snapshot.getChildren()){
-                    valuesArray.add(it.getValue().toString());
-                    keyArray.add(it.getKey().toString());
-                }
+                User user=snapshot.getValue(User.class);
 
-
-                textView1.setText("Name : "+ valuesArray.get(4));
-                textView2.setText("Email : "+ valuesArray.get(2));
-                textView3.setText("Age : "+ valuesArray.get(0));
-                textView4.setText("Days So far : "+ valuesArray.get(1));
-
+                textView1.setText("Name : "+ user.getName());
+                textView2.setText("Email : "+ user.getEmail());
+                textView3.setText("Age : "+ user.getAge());
+                textView4.setText("Days So far : "+ user.getDays());
+                textView7.setText("CALORIE INTAKE :"+user.getCalorieIntake());
 
 
             }

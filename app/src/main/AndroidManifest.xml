@@ -11,9 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitFreak">
-        <activity android:name=".api"
-            android:parentActivityName=".MainActivity">
-        </activity>
+        <activity
+            android:name=".caloriecal"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".api"
+            android:parentActivityName=".MainActivity"></activity>
         <activity android:name=".Register" />
         <activity
             android:name=".History"
@@ -29,7 +32,7 @@
         <activity
             android:name=".MyProfile"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

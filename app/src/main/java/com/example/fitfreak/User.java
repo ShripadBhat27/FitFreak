@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class User {
     String name,email,age,id;
     public int days;
+    public int calorieIntake;
     ArrayList<Integer> steps;
 
     public ArrayList<Integer> getSteps() {
@@ -18,13 +19,14 @@ public class User {
     public User(){
     }
 
-    public User(String name, String email, String age, String id, int days, ArrayList<Integer> steps) {
+    public User(String name, String email, String age, String id, int days,int calorieIntake ,ArrayList<Integer> steps) {
         this.name = name;
         this.email = email;
         this.age = age;
         this.id = id;
         this.days = days;
         this.steps = steps;
+        this.calorieIntake=calorieIntake;
     }
 
     public int getDays() {
@@ -67,4 +69,11 @@ public class User {
         this.age = age;
     }
 
+    public int getCalorieIntake() {
+        return calorieIntake;
+    }
+
+    public void setCalorieIntake(int calorieIntake) {
+        this.calorieIntake = calorieIntake;
+    }
 }
