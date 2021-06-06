@@ -44,7 +44,7 @@ public class MyProfile extends AppCompatActivity {
                 textView2.setText("Email : "+ user.getEmail());
                 textView3.setText("Age : "+ user.getAge());
                 textView4.setText("Days So far : "+ user.getDays());
-                textView7.setText("CALORIE INTAKE :"+user.getCalorieIntake());
+                textView7.setText("CALORIE INTAKE :"+user.getCalorieIntake()+" kCal");
 
 
             }
