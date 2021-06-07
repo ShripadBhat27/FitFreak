@@ -4,10 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +36,7 @@ public class caloriecal extends AppCompatActivity {
     TextView caloriesintake,monthlyintake;
     EditText getfood,getquantity;
     Button calculate;
+    ProgressBar progressBar;
     private String link="https://api.nal.usda.gov/fdc/v1/foods/search?api_key=YffhvBYCUEp44VByOPC0AxKUq2LQS30ozvUunFVR&query=";
     double cal;
     double quantity=0;
@@ -49,6 +52,7 @@ public class caloriecal extends AppCompatActivity {
         calculate=findViewById(R.id.calculate);
         caloriesintake=findViewById(R.id.calorie_intake_content);
         monthlyintake=findViewById(R.id.monthly_intake_content);
+        progressBar=findViewById(R.id.progressBarcal);
         userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userId);
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -67,17 +71,18 @@ public class caloriecal extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(caloriecal.this, "PLEASE WAIT!!", Toast.LENGTH_SHORT).show();
+                String fi=getfood.getText().toString();
+                String q=getquantity.getText().toString();
+                if(TextUtils.isEmpty(fi)){
+                    getfood.setError("Enter valid food item.");
+                    return;
+                }
+                if(TextUtils.isEmpty(q)){
+                    getquantity.setError("Enter valid quantity.");
+                    return;
+                }
+                progressBar.setVisibility(View.VISIBLE);
                 fetchData();
-                quantity=Double.parseDouble(getquantity.getText().toString());
-                ans=cal*quantity;
-
-                caloriesintake.setText(""+ans+" KCAL");
-
-                overall+=ans;
-                databaseReference.child("calorieIntake").setValue(overall);
-                monthlyintake.setText(""+overall +" KCAL");
-
             }
         });
     }
@@ -99,7 +104,13 @@ public class caloriecal extends AppCompatActivity {
                                 if(nutrient.equals("Energy"))
                                 {
                                     cal=Double.parseDouble(jsonObject2.getString("value"));
-
+                                    quantity=Double.parseDouble(getquantity.getText().toString());
+                                    ans=cal*quantity;
+                                    overall+=ans;
+                                    databaseReference.child("calorieIntake").setValue(overall);
+                                    monthlyintake.setText(Double.toString(overall)+" KCAL");
+                                    caloriesintake.setText(Double.toString(ans)+" KCAL");
+                                    progressBar.setVisibility(View.INVISIBLE);
                                     break;
                                 }
                             }

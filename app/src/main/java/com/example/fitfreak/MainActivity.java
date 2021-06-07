@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private Button BtnStart;
     private Button BtnStop;
     TextView clock,DAYS;
-    private Button Article;
-    private Button CalorieCal;
 
 
     private int seconds = 0;
@@ -68,8 +66,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         DAYS=findViewById(R.id.DAYS);
-        Article=findViewById(R.id.articles);
-        CalorieCal=findViewById(R.id.calcal);
         userId=FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseReference= FirebaseDatabase.getInstance().getReference("Users").child(userId);
         databaseReference2=FirebaseDatabase.getInstance().getReference("Calorie").child(userId);
@@ -110,20 +106,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         BtnStart = (Button) findViewById(R.id.btn_start);
         BtnStop = (Button) findViewById(R.id.btn_stop);
         clock = findViewById(R.id.clock);
-
-        Article.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),api.class));
-            }
-        });
-
-        CalorieCal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),caloriecal.class));
-            }
-        });
 
         BtnStart.setOnClickListener(new View.OnClickListener() {
 
@@ -197,10 +179,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         steps.setText(TEXT_NUM_STEPS + numSteps);
 
         double meter=(1000*numSteps)/1350;
-        distance.setText("KM ->" + String.format("%.3f",meter/1000));
+        distance.setText("DISTANCE: " + String.format("%.3f",meter/1000)+" KM");
         double caloriesburned=meter*76/1000;
 
-        calories.setText("Calories->"+String.format("%.2f",caloriesburned));
+        calories.setText("Calories: "+String.format("%.2f",caloriesburned)+" KCAL");
 
     }
 

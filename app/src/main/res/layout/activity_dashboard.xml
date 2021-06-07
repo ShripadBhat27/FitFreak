@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp"
+    tools:context=".dashboard">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="10dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="25dp">
+
+
+        <LinearLayout
+            android:id="@+id/run3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            android:background="@drawable/gradient">
+
+            <ImageView
+                android:id="@+id/run2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/steplogo" />
+
+            <TextView
+                android:id="@+id/run1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:text="Start Workout"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="10dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="25dp">
+
+        <LinearLayout
+            android:id="@+id/calcal3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient">
+
+            <ImageView
+                android:id="@+id/calcal2"
+                android:layout_width="100dp"
+
+                android:layout_height="100dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/calcallogo" />
+
+            <TextView
+                android:id="@+id/calcal1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:text="Calorie Calculator"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="10dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="25dp">
+
+        <LinearLayout
+            android:id="@+id/article3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient">
+
+            <ImageView
+                android:id="@+id/article2"
+                android:layout_width="100dp"
+
+                android:layout_height="100dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/articlelogo" />
+
+            <TextView
+                android:id="@+id/article1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:text="Articles"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:cardElevation="10dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="25dp">
+
+        <LinearLayout
+            android:id="@+id/user3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient">
+
+            <ImageView
+                android:id="@+id/user2"
+                android:layout_width="100dp"
+
+                android:layout_height="100dp"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="16dp"
+                app:srcCompat="@drawable/complogo3" />
+
+            <TextView
+                android:id="@+id/user1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:text="User Profile"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+</LinearLayout>

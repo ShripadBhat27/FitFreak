@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyProfile">
+    tools:context=".MyProfile"
+    android:layout_margin="10dp">
 
     <TextView
         android:id="@+id/textView1"
@@ -13,7 +14,6 @@
         android:layout_marginStart="171dp"
         android:layout_marginTop="204dp"
         android:layout_marginEnd="182dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,6 @@
         android:layout_marginStart="171dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="182dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -37,7 +36,6 @@
         android:layout_marginStart="171dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="182dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -49,7 +47,6 @@
         android:layout_marginStart="171dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="182dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
@@ -62,7 +59,9 @@
         android:layout_marginTop="99dp"
         android:layout_marginEnd="182dp"
         android:fontFamily="sans-serif-black"
-        android:text="Information"
+        android:text="User Profile"
+        android:textColor="#000000"
+        android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -75,8 +74,19 @@
         android:layout_marginStart="171dp"
         android:layout_marginTop="51dp"
         android:layout_marginEnd="182dp"
-        android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/plogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Log out"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.696" />
 </androidx.constraintlayout.widget.ConstraintLayout>

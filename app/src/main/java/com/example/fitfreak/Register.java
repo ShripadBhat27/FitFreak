@@ -49,7 +49,7 @@ public class Register extends AppCompatActivity {
         databaseUsers= FirebaseDatabase.getInstance().getReference("Users");
         //check if user is already login
         if(fAuth.getCurrentUser()!=null){
-            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+            startActivity(new Intent(getApplicationContext(),dashboard.class));
             finish();
         }
 
@@ -91,7 +91,7 @@ public class Register extends AppCompatActivity {
                             databaseUsers.child(userID).setValue(u1);
 
 
-                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(),dashboard.class));
                         }
                         else{
                             Toast.makeText(Register.this, "ERROR ->"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();

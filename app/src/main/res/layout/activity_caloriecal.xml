@@ -8,11 +8,38 @@
     tools:context=".caloriecal">
 
     <TextView
-        android:id="@+id/calorie_intake_content"
-        android:layout_width="match_parent"
+        android:id="@+id/calccontent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:text="Calculator "
+        android:textStyle="italic"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calcontent" />
+
+    <TextView
+        android:id="@+id/calcontent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="30dp"
+        android:text="Calorie "
+        android:fontFamily="sans-serif-smallcaps"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/calorie_intake_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:hint="Number of Calories in KCAL"
         android:textColor="@color/black"
@@ -28,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="180dp"
-        android:text="Enter Food"
+        android:text="Enter Food Item"
         android:textStyle="italic"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -55,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Calculate"
+        android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/enter_food_content" />
@@ -107,9 +135,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="sans-serif-black"
-        android:text="Overall  Calorie Intake:"
+        android:text="Overall Calorie Intake:"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -118,16 +146,29 @@
 
     <TextView
         android:id="@+id/monthly_intake_content"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:hint="Number of Calories in KCAL"
         android:textColor="@color/black"
         android:textColorHint="#423D3D"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/monthly_intake"
         app:layout_constraintVertical_bias="0.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBarcal"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthly_intake_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

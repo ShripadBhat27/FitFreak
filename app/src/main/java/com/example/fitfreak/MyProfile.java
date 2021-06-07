@@ -3,7 +3,10 @@ package com.example.fitfreak;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +23,7 @@ public class MyProfile extends AppCompatActivity {
     String userId;
 
     TextView textView1,textView2,textView3,textView4,textView7;
+    Button button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,16 @@ public class MyProfile extends AppCompatActivity {
         textView3=findViewById(R.id.textView3);
         textView4=findViewById(R.id.textView4);
         textView7=findViewById(R.id.textView7);
+        button=findViewById(R.id.plogout);
 
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(),Login.class));
+                finish();
+            }
+        });
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
