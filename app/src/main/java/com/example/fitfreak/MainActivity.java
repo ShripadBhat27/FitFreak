@@ -179,10 +179,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         steps.setText(TEXT_NUM_STEPS + numSteps);
 
         double meter=(1000*numSteps)/1350;
-        distance.setText("DISTANCE: " + String.format("%.3f",meter/1000)+" KM");
+        distance.setText("Distance Covered: " + String.format("%.3f",meter/1000)+" KM");
         double caloriesburned=meter*76/1000;
 
-        calories.setText("Calories: "+String.format("%.2f",caloriesburned)+" KCAL");
+        calories.setText("Calories Burned: "+String.format("%.2f",caloriesburned)+" KCAL");
 
     }
 

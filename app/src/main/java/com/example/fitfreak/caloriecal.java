@@ -94,25 +94,32 @@ public class caloriecal extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("foods");
-                            JSONObject jsonObject1=jsonArray.getJSONObject(0);
-                            JSONArray jsonArray1=jsonObject1.getJSONArray("foodNutrients");
-                            for(int i=0;i<jsonArray1.length();i++)
-                            {
-                                JSONObject jsonObject2=jsonArray1.getJSONObject(i);
-                                String nutrient=jsonObject2.getString("nutrientName");
-                                if(nutrient.equals("Energy"))
-                                {
-                                    cal=Double.parseDouble(jsonObject2.getString("value"));
-                                    quantity=Double.parseDouble(getquantity.getText().toString());
-                                    ans=cal*quantity;
-                                    overall+=ans;
-                                    databaseReference.child("calorieIntake").setValue(overall);
-                                    monthlyintake.setText(Double.toString(overall)+" KCAL");
-                                    caloriesintake.setText(Double.toString(ans)+" KCAL");
-                                    progressBar.setVisibility(View.INVISIBLE);
-                                    break;
+                            String totalhits=jsonObject.getString("totalHits");
+                            if(!totalhits.equals("0")) {
+                                JSONArray jsonArray = jsonObject.getJSONArray("foods");
+                                JSONObject jsonObject1 = jsonArray.getJSONObject(0);
+                                JSONArray jsonArray1 = jsonObject1.getJSONArray("foodNutrients");
+                                for (int i = 0; i < jsonArray1.length(); i++) {
+                                    JSONObject jsonObject2 = jsonArray1.getJSONObject(i);
+                                    String nutrient = jsonObject2.getString("nutrientName");
+                                    if (nutrient.equals("Energy")) {
+                                        cal = Double.parseDouble(jsonObject2.getString("value"));
+                                        quantity = Double.parseDouble(getquantity.getText().toString());
+                                        ans = cal * quantity;
+                                        overall += ans;
+                                        databaseReference.child("calorieIntake").setValue(overall);
+                                        monthlyintake.setText(Double.toString(overall) + " KCAL");
+                                        caloriesintake.setText(Double.toString(ans) + " KCAL");
+                                        progressBar.setVisibility(View.INVISIBLE);
+                                        break;
+                                    }
                                 }
+                            }
+                            else
+                            {
+                                progressBar.setVisibility(View.INVISIBLE);
+                                getfood.setError("Enter valid food item.");
+                                return;
                             }
 
                         } catch (JSONException e) {

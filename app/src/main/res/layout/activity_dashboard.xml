@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="8dp"
+    android:background="@drawable/appbg"
     tools:context=".dashboard">
 
     <androidx.cardview.widget.CardView

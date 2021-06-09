@@ -35,12 +35,12 @@ public class CustomAdapter extends ArrayAdapter {
         int numsteps=data.get(position);
 
         Rdays.setText("Day # "+(position+1));
-        Rsteps.setText("No of Steps :"+numsteps);
+        Rsteps.setText("Number of Steps: "+numsteps);
         double meter=(1000*numsteps)/1350;
-        Rdistance.setText("Distance Covered :" + String.format("%.3f",meter/1000));
+        Rdistance.setText("Distance Covered: " + String.format("%.3f",meter/1000)+" KCAL");
         double caloriesburned=meter*76/1000;
 
-        Rcalories.setText("Calories Burned :"+String.format("%.2f",caloriesburned));
+        Rcalories.setText("Calories Burned: "+String.format("%.2f",caloriesburned)+" KM");
 
 
         return view;
